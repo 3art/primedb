@@ -30,7 +30,8 @@ for film in films:
         if 'year' in imdb_item.data:
             imdb_titel = imdb_item.data['title']
             imdb_year = imdb_item.data['year']
-            if imdb_titel == title and imdb_year == year:
+            imdb_kind = imdb_item.data['kind']
+            if imdb_kind == 'movie' and title in imdb_titel and imdb_year == year:
                 film_details = imdb_service.get_movie(imdb_item.movieID)
                 rating = film_details.data['rating'] if 'rating' in film_details.data else "(no rating)"
                 print "{} - {} - {}".format(title, year, rating)
